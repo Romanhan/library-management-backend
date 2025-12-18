@@ -1,8 +1,3 @@
-<p align="center">
-  <img src="logo.png" alt="Nortal LEAP Logo" width="180">
-</p>
-<h1 align="center">Nortal LEAP 2026 Coding Assignment</h1>
-
 ## Prerequisites (minimal)
 - Node.js 20+ and npm
 - JDK 21 (uses bundled Gradle wrapper; no separate Gradle install needed)
