@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class LibraryService {
     private static final int MAX_LOANS = 5;
@@ -125,13 +126,9 @@ public class LibraryService {
         if (!memberRepository.existsById(memberId)) {
             return false;
         }
-        int active = 0;
-        for (Book book : bookRepository.findAll()) {
-            if (memberId.equals(book.getLoanedTo())) {
-                active++;
-            }
-        }
-        return active < MAX_LOANS;
+        long loanedBooks = bookRepository.countByLoanedTo(memberId);
+
+        return loanedBooks < MAX_LOANS;
     }
 
     public List<Book> searchBooks(String titleContains, Boolean availableOnly, String loanedTo) {
